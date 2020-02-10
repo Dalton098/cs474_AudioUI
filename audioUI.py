@@ -49,6 +49,9 @@ def getUserInput(prompt, options):
                         isOption = True
                     i += 1
 
+                if user_input == "exit game":
+                    sys.exit()
+
                 if isOption == False:
                     isInvalid = True
                     invalidPrompt = "Please try again, what you said did not match one of the options."
