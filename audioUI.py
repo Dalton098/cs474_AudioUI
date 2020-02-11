@@ -16,6 +16,8 @@ def listLanguages(langOptions):
         print(str(i) + ":\t" + key)
         i+=1
 
+# def getLanguageInput(prompt, langOptions):
+
 # gets speech for translation (loops if cannot understand audio, if request fails just exits)
 def getTranslationInput(prompt):
 
@@ -138,9 +140,9 @@ def main():
     langOptions["hebrew"] = "he"
     del langOptions["kurdish (kurmanji)"]
     langOptions["kurdish"] = "ku"
-    # print(langOptions["afrikaans"])
+    print(langOptions.get("afrikaans"))
 
-    listLanguages(langOptions)
+    # listLanguages(langOptions)
 
     # options = ["Translate using a source and destination language", "Translate via auto detection and a destination language"]
     # prompt = "This program is a text-to-speech based language translator.\nUse your voice to select one of the options below by saying the option or the number associated with it."
