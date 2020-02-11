@@ -119,6 +119,9 @@ def getMenuInput(prompt, options):
     return numOption
 
 def main():
+
+    # TODO: Add input method for selecting language
+
     # HOW TO USE TRANSLATOR
     # translator = Translator()
     # translation = translator.translate('안녕하세요.')
