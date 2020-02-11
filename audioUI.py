@@ -9,8 +9,45 @@ def speak(tts, text):
     tts.say(text)
     tts.runAndWait()
 
-# Gets user input and adds the exit program option so they can quit
-def getUserInput(prompt, options):
+# gets speech for translation (loops if cannot understand audio, if request fails just exits)
+def getTranslationInput(prompt):
+
+    # get audio from the microphone                                                                       
+    listener = sr.Recognizer()                                                                                   
+    with sr.Microphone() as source:
+        listener.adjust_for_ambient_noise(source)
+        isInvalid = True
+
+        # Checking if the input matches an option/exceptions
+        while isInvalid:
+            print(prompt)
+            speak(tts, prompt)
+
+            user_input = None
+
+            #record audio
+            audio = listener.listen(source)
+            try:
+                isInvalid = False
+
+                #convert audio to text
+                user_input = listener.recognize_google(audio)
+
+            except sr.UnknownValueError:
+                isInvalid = True
+                print("Could not understand audio")
+            except sr.RequestError as e:
+                print("Could not request results, exiting; {0}".format(e))
+                sys.exit()
+
+            sys.stdout.write("\n")
+
+    return user_input
+
+
+
+# Gets user input and adds the exit program option so they can quit at any point
+def getMenuInput(prompt, options):
 
     options.append("Exit program")
 
@@ -65,8 +102,8 @@ def getUserInput(prompt, options):
                 isInvalid = True
                 print("Could not understand audio")
             except sr.RequestError as e:
-                isInvalid = True
-                print("Could not request results; {0}".format(e))
+                print("Could not request results, exiting; {0}".format(e))
+                sys.exit()
 
             sys.stdout.write("\n")
 
@@ -82,8 +119,17 @@ def main():
     # options = ["Translate using a source and destination language", "Translate via auto detection and a destination language"]
     options = ["test 1","test 2"]
     # prompt = "This program is a text-to-speech based language translator.\nUse your voice to select one of the options below by saying the option or the number associated with it."
-    temp = getUserInput("yeet", options)
-    print(temp)
+    optionSelected = getMenuInput("yeet", options)
+    print(optionSelected)
+
+    if optionSelected == 1:
+        print("yeet")
+
+    if optionSelected == 2:
+        print("yeet")
+
+
+
 
 if __name__ == "__main__":
     main()
