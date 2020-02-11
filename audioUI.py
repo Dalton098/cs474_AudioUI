@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import sys
-from googletrans import Translator
+from googletrans import Translator, LANGUAGES
 
 tts = pyttsx3.init()
 
@@ -110,23 +110,41 @@ def getMenuInput(prompt, options):
     return numOption
 
 def main():
+    # HOW TO USE TRANSLATOR
     # translator = Translator()
     # translation = translator.translate('안녕하세요.')
     # print(translation.text)
     # print(translation)
 
+    # HOW TO ACCESS LANGUAGES FOR TRANSLATION   
+    langOptions = dict(map(reversed, LANGUAGES.items()))
+
+    # Modifying some of the keys/values because tts makes these difficult to select or repeats
+    # del langOptions["Filipino"]
+    # del langOptions["chinese (simplified)"]
+    # langOptions["chinese simplified"] = "zh-cn"
+    # del langOptions["chinese (traditional)"]
+    # langOptions["chinese traditional"] = "zh-tw"
+    # del langOptions["myanmar (burmese)"]
+    # langOptions["myanmar"] = "my"
+    # del langOptions["Hebrew"]
+    # langOptions["hebrew"] = "he"
+    # del langOptions["kurdish (kurmanji)"]
+    # langOptions["kurdish"] = "ku"
+    # print(langOptions["afrikaans"])
 
     # options = ["Translate using a source and destination language", "Translate via auto detection and a destination language"]
-    options = ["test 1","test 2"]
     # prompt = "This program is a text-to-speech based language translator.\nUse your voice to select one of the options below by saying the option or the number associated with it."
-    optionSelected = getMenuInput("yeet", options)
-    print(optionSelected)
+    
+    # options = ["test 1","test 2"]
+    # optionSelected = getMenuInput("yeet", options)
+    # print(optionSelected)
 
-    if optionSelected == 1:
-        print("yeet")
+    # if optionSelected == 1:
+    #     print("yeet")
 
-    if optionSelected == 2:
-        print("yeet")
+    # if optionSelected == 2:
+    #     print("yeet")
 
 
 
