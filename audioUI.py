@@ -9,6 +9,13 @@ def speak(tts, text):
     tts.say(text)
     tts.runAndWait()
 
+def listLanguages(langOptions):
+    i = 1
+    for key in langOptions.keys():
+        key = key.capitalize()
+        print(str(i) + ":\t" + key)
+        i+=1
+
 # gets speech for translation (loops if cannot understand audio, if request fails just exits)
 def getTranslationInput(prompt):
 
@@ -120,18 +127,20 @@ def main():
     langOptions = dict(map(reversed, LANGUAGES.items()))
 
     # Modifying some of the keys/values because tts makes these difficult to select or repeats
-    # del langOptions["Filipino"]
-    # del langOptions["chinese (simplified)"]
-    # langOptions["chinese simplified"] = "zh-cn"
-    # del langOptions["chinese (traditional)"]
-    # langOptions["chinese traditional"] = "zh-tw"
-    # del langOptions["myanmar (burmese)"]
-    # langOptions["myanmar"] = "my"
-    # del langOptions["Hebrew"]
-    # langOptions["hebrew"] = "he"
-    # del langOptions["kurdish (kurmanji)"]
-    # langOptions["kurdish"] = "ku"
+    del langOptions["Filipino"]
+    del langOptions["chinese (simplified)"]
+    langOptions["chinese simplified"] = "zh-cn"
+    del langOptions["chinese (traditional)"]
+    langOptions["chinese traditional"] = "zh-tw"
+    del langOptions["myanmar (burmese)"]
+    langOptions["myanmar"] = "my"
+    del langOptions["Hebrew"]
+    langOptions["hebrew"] = "he"
+    del langOptions["kurdish (kurmanji)"]
+    langOptions["kurdish"] = "ku"
     # print(langOptions["afrikaans"])
+
+    listLanguages(langOptions)
 
     # options = ["Translate using a source and destination language", "Translate via auto detection and a destination language"]
     # prompt = "This program is a text-to-speech based language translator.\nUse your voice to select one of the options below by saying the option or the number associated with it."
