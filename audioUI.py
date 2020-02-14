@@ -216,42 +216,47 @@ def languageMenu(prompt, option):
 
 def main():
 
-    options = ["Translate using a source and destination language", "Translate using auto detection and a destination language"]
-    prompt = "This program is a text-to-speech based language translator.\nUse your voice to select one of the options below by saying the option or the number associated with it."
+    print("This program is a text-to-speech based language translator.")
+    speak(tts, "This program is a text-to-speech based language translator.")
 
-    optionSelected = getMenuInput(prompt, options)
+    while True:
 
-    if optionSelected == 1:
+        options = ["Translate using a source and destination language", "Translate using auto detection and a destination language"]
+        prompt = "Use your voice to select one of the options below by saying the option or the number associated with it."
 
-        option = "source"
-        prompt = "Select an option below:"
-        sourceCode = languageMenu(prompt, option)
+        optionSelected = getMenuInput(prompt, options)
 
-        option = "destination"
-        prompt = "Select an option below:"
-        destCode = languageMenu(prompt, option)
-    
-        translatePrompt = "Say what you would like to be translated:"
-        toTranslate = getTranslationInput(translatePrompt)
-        print(toTranslate.capitalize + "\n")
+        if optionSelected == 1:
 
-        print("Translation: ")
-        speak(tts, "Translation: ")
-        translate(sourceCode, destCode, toTranslate)
+            option = "source"
+            prompt = "Select an option below:"
+            sourceCode = languageMenu(prompt, option)
 
-    if optionSelected == 2:
+            option = "destination"
+            prompt = "Select an option below:"
+            destCode = languageMenu(prompt, option)
+        
+            translatePrompt = "Say what you would like to be translated:"
+            toTranslate = getTranslationInput(translatePrompt)
+            print(toTranslate.capitalize + "\n")
 
-        option = "destination"
-        prompt = "Select an option below:"
-        destCode = languageMenu(prompt, option)
+            print("Translation: ")
+            speak(tts, "Translation: ")
+            translate(sourceCode, destCode, toTranslate)
 
-        translatePrompt = "Say what you would like to be translated:"
-        toTranslate = getTranslationInput(translatePrompt)
-        print(toTranslate.capitalize + "\n")
+        if optionSelected == 2:
 
-        print("Translation: ")
-        speak(tts, "Translation: ")
-        translateAuto(destCode, toTranslate)
+            option = "destination"
+            prompt = "Select an option below:"
+            destCode = languageMenu(prompt, option)
+
+            translatePrompt = "Say what you would like to be translated:"
+            toTranslate = getTranslationInput(translatePrompt)
+            print(toTranslate.capitalize + "\n")
+
+            print("Translation: ")
+            speak(tts, "Translation: ")
+            translateAuto(destCode, toTranslate)
 
 
 if __name__ == "__main__":
