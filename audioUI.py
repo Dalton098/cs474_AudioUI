@@ -9,7 +9,7 @@ translator = Translator()
 langOptions = dict(map(reversed, LANGUAGES.items()))
 
 # Modifying some of the keys/values because tts makes these difficult to select or repeats
-del langOptions["Filipino"]
+del langOptions["Filipino"]                         #Filipino had two keys so removed the capitalized version
 del langOptions["chinese (simplified)"]
 langOptions["chinese simplified"] = "zh-cn"
 del langOptions["chinese (traditional)"]
