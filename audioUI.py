@@ -127,8 +127,6 @@ def getTranslationInput(prompt):
                 print("Could not request results, exiting; {0}".format(e))
                 sys.exit()
 
-            sys.stdout.write("\n")
-
     return user_input
 
 # Gets user input and adds the exit program option so they can quit at any point
@@ -222,7 +220,7 @@ def main():
     while True:
 
         options = ["Translate using a source and destination language", "Translate using auto detection and a destination language"]
-        prompt = "Use your voice to select one of the options below by saying the option or the number associated with it."
+        prompt = "\nUse your voice to select one of the options below by saying the option or the number associated with it."
 
         optionSelected = getMenuInput(prompt, options)
 
@@ -238,7 +236,7 @@ def main():
         
             translatePrompt = "Say what you would like to be translated:"
             toTranslate = getTranslationInput(translatePrompt)
-            print(toTranslate.capitalize + "\n")
+            print(toTranslate.capitalize() + "\n")
 
             print("Translation: ")
             speak(tts, "Translation: ")
@@ -252,7 +250,7 @@ def main():
 
             translatePrompt = "Say what you would like to be translated:"
             toTranslate = getTranslationInput(translatePrompt)
-            print(toTranslate.capitalize + "\n")
+            print(toTranslate.capitalize() + "\n")
 
             print("Translation: ")
             speak(tts, "Translation: ")
