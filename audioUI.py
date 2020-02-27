@@ -167,13 +167,13 @@ def getMenuInput(prompt, options):
                 i = 0
                 numOption = -1
                 while i < len(options) and not(isOption):
-                    if options[i].lower() == user_input or str(i+1) == user_input:
+                    if options[i].lower() == user_input.lower() or str(i+1) == user_input:
                         isOption = True
                         numOption = i+1
                     i += 1
 
                 # exits if they select exit of the last option (which is always exit)
-                if user_input == "exit program" or numOption == len(options):
+                if user_input.lower() == "exit program" or numOption == len(options):
                     sys.exit()
 
                 # handles invalid option selected
